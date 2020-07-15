@@ -2,7 +2,11 @@
 
 //import express
 const express = require("express");
+const connectDB = require("./config/db");
 const app = express();
+
+//connect database
+connectDB();
 
 //get- type of request
 app.get("/", (req, res) => {
