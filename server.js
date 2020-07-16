@@ -8,6 +8,9 @@ const app = express();
 //connect database
 connectDB();
 
+//Init Middleware-to accept body data
+app.use(express.json({ extended: false }));
+
 //get- type of request
 app.get("/", (req, res) => {
   //returns an object
