@@ -51,6 +51,7 @@ router.post(
           id: user.id,
         },
       };
+      //token generation
       jwt.sign(
         payload,
         config.get("jwtSecret"),
