@@ -92,18 +92,18 @@ img {
 
 /* Cards */
 .card {
-  padding: 1rem;
+  padding: 0.5rem;
   border: #ccc 1px dotted;
-  margin: 0.7rem 0;
+  margin: 0.5rem 0;
 }
 
 /* List */
 .list {
-  margin: 0.5rem 0;
+  margin: 0.3rem 0;
 }
 
 .list li {
-  padding-bottom: 0.3rem;
+  padding-bottom: 0.1rem;
 }
 
 /* Padding */
@@ -149,7 +149,7 @@ img {
   margin: 0.5rem 0;
 }
 .my-1 {
-  margin: 1rem 0;
+  margin: 0.8rem 0;
 }
 .my-2 {
   margin: 2rem 0;
