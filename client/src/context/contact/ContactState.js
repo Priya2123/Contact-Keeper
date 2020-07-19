@@ -58,6 +58,7 @@ const ContactState = (props) => {
   //Clear Filter
 
   return (
+    //for global access
     <contactContext.Provider
       value={{
         contacts: state.contacts,
