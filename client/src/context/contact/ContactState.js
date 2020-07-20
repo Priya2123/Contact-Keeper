@@ -1,5 +1,5 @@
 import React, { useReducer } from "react";
-import uuid from "uuid";
+import { uuid } from "uuid";
 import ContactContext from "./ContactContext";
 import ContactReducer from "./ContactReducer";
 import {
@@ -44,6 +44,11 @@ const ContactState = (props) => {
 
   //ACTIONS
   //Add Contact
+  const addContact = (contact) => {
+    //to generate random id
+    contact.id = uuid.v4();
+    dispatch({ type: ADD_CONTACT, payload: contact });
+  };
 
   //Delete Contact
 
