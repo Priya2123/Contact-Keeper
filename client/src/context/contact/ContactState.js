@@ -1,5 +1,6 @@
 import React, { useReducer } from "react";
-import { uuid } from "uuid";
+//since uuid package does not contain a default export(error) so Once installed, decide which type of UUID you need.
+import { v4 as uuid } from "uuid";
 import ContactContext from "./ContactContext";
 import ContactReducer from "./ContactReducer";
 import {
