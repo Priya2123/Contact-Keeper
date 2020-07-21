@@ -56,6 +56,7 @@ const ContactForm = () => {
         name="type"
         value="personal"
         checked={type === "personal"}
+        onChange={onChange}
       />
       Personal{" "}
       <input
@@ -63,6 +64,7 @@ const ContactForm = () => {
         name="type"
         value="professional"
         checked={type === "professional"}
+        onChange={onChange}
       />
       Professional
       <div>

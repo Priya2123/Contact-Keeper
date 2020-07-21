@@ -1,6 +1,5 @@
 import React, { useReducer } from "react";
-import { uuid } from "uuid";
-import ContactContext from "./ContactContext";
+import uuid from "react-uuid";
 import ContactReducer from "./ContactReducer";
 import {
   ADD_CONTACT,
@@ -11,7 +10,7 @@ import {
   FILTER_CONTACTS,
   CLEAR_FILTER,
 } from "../types";
-import contactContext from "./ContactContext";
+import ContactContext from "./ContactContext";
 
 const ContactState = (props) => {
   const initialState = {
@@ -46,7 +45,7 @@ const ContactState = (props) => {
   //Add Contact
   const addContact = (contact) => {
     //to generate random id
-    contact.id = uuid.v4();
+    contact.id = uuid();
     dispatch({ type: ADD_CONTACT, payload: contact });
   };
 
@@ -64,13 +63,14 @@ const ContactState = (props) => {
 
   return (
     //for global access
-    <contactContext.Provider
+    <ContactContext.Provider
       value={{
         contacts: state.contacts,
+        addContact,
       }}
     >
       {props.children}
-    </contactContext.Provider>
+    </ContactContext.Provider>
   );
 };
 
