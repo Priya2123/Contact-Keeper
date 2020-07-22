@@ -1,5 +1,7 @@
 import React, { useReducer } from "react";
-import uuid from "react-uuid";
+//import uuid from "react-uuid";
+import { v4 as uuidv4 } from "uuid";
+import ContactContext from "./ContactContext";
 import ContactReducer from "./ContactReducer";
 import {
   ADD_CONTACT,
@@ -10,7 +12,6 @@ import {
   FILTER_CONTACTS,
   CLEAR_FILTER,
 } from "../types";
-import ContactContext from "./ContactContext";
 
 const ContactState = (props) => {
   const initialState = {
@@ -45,11 +46,14 @@ const ContactState = (props) => {
   //Add Contact
   const addContact = (contact) => {
     //to generate random id
-    contact.id = uuid();
+    contact.id = uuidv4();
     dispatch({ type: ADD_CONTACT, payload: contact });
   };
 
   //Delete Contact
+  const deleteContact = (id) => {
+    dispatch({ type: DELETE_CONTACT, payload: id });
+  };
 
   //Set Current Contact
 
@@ -67,6 +71,7 @@ const ContactState = (props) => {
       value={{
         contacts: state.contacts,
         addContact,
+        deleteContact,
       }}
     >
       {props.children}
