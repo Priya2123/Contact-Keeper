@@ -3,6 +3,7 @@ import ContactContext from "../../context/contact/ContactContext";
 
 const ContactForm = () => {
   const contactContext = useContext(ContactContext);
+  const { addContact } = contactContext;
 
   const [contact, setContact] = useState({
     name: "",
@@ -17,7 +18,7 @@ const ContactForm = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    contactContext.addContact(contact);
+    addContact(contact);
     setContact({
       name: "",
       email: "",
