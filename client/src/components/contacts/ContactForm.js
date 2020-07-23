@@ -1,9 +1,27 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import ContactContext from "../../context/contact/ContactContext";
 
 const ContactForm = () => {
   const contactContext = useContext(ContactContext);
-  const { addContact } = contactContext;
+  const { addContact, current } = contactContext;
+
+  //when comp is mounted
+  useEffect(() => {
+    if (current !== null) {
+      setContact(current);
+    } else {
+      setContact(
+        {
+          name: "",
+          email: "",
+          phone: "",
+          type: "personal",
+          //useEffect runs <-- these dependencies are changed
+        },
+        [contactContext, current]
+      );
+    }
+  });
 
   const [contact, setContact] = useState({
     name: "",
