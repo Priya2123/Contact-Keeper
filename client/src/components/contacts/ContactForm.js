@@ -1,9 +1,24 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import ContactContext from "../../context/contact/ContactContext";
 
 const ContactForm = () => {
   const contactContext = useContext(ContactContext);
-  const { addContact } = contactContext;
+  const { addContact, current, updateContact, clearCurrent } = contactContext;
+
+  //when comp is mounted
+  useEffect(() => {
+    if (current !== null) {
+      setContact(current);
+    } else {
+      setContact({
+        name: "",
+        email: "",
+        phone: "",
+        type: "personal",
+      });
+    }
+    //useEffect runs <-- these dependencies are changed
+  }, [contactContext, current]);
 
   const [contact, setContact] = useState({
     name: "",
@@ -11,6 +26,7 @@ const ContactForm = () => {
     phone: "",
     type: "personal",
   });
+
   const { name, email, phone, type } = contact;
 
   const onChange = (e) =>
@@ -18,17 +34,23 @@ const ContactForm = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    addContact(contact);
-    setContact({
-      name: "",
-      email: "",
-      phone: "",
-      type: "personal",
-    });
+    if (current === null) {
+      addContact(contact);
+    } else {
+      updateContact(contact);
+    }
+    clearAll();
+  };
+
+  const clearAll = () => {
+    //current state: null
+    clearCurrent();
   };
   return (
     <form onSubmit={onSubmit}>
-      <h2 className="text-primary">Add Contact</h2>
+      <h2 className="text-primary">
+        {current ? "Edit Contact" : "Add Contact"}
+      </h2>
       {/* value - state */}
       <input
         type="text"
@@ -71,10 +93,17 @@ const ContactForm = () => {
       <div>
         <input
           type="submit"
-          value="Add Contact"
+          value={current ? "Update Contact" : "Add Contact"}
           className="btn btn-primary btn-block"
         />
       </div>
+      {current && (
+        <div>
+          <button className="btn btn-light btn-block" onClick={clearAll}>
+            Clear
+          </button>
+        </div>
+      )}
     </form>
   );
 };
