@@ -10,7 +10,7 @@ import {
 } from "../types";
 
 export default (state, action) => {
-  switch (action.payload) {
+  switch (action.type) {
     case ADD_CONTACT:
       return {
         ...state,
