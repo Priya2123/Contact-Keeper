@@ -1,6 +1,6 @@
 import React, { useReducer } from "react";
 import { v4 as uuidv4 } from "uuid";
-import AuthContext from "./authContext";
+import authContext from "./authContext";
 import authReducer from "./authReducer";
 import {
   REGISTER_SUCCESS,
@@ -39,7 +39,7 @@ const AuthState = (props) => {
 
   return (
     //for global access
-    <AuthContext.Provider
+    <authContext.Provider
       value={{
         token: state.token,
         isAuthenticated: state.isAuthenticated,
@@ -49,7 +49,7 @@ const AuthState = (props) => {
       }}
     >
       {props.children}
-    </AuthContext.Provider>
+    </authContext.Provider>
   );
 };
 
