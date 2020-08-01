@@ -56,6 +56,11 @@ const AuthState = (props) => {
   //Logout
 
   //Clear Errors
+  const clearErrors = () => {
+    dispatch({
+      type: CLEAR_ERRORS,
+    });
+  };
 
   return (
     //for global access
@@ -67,6 +72,7 @@ const AuthState = (props) => {
         user: state.user,
         error: state.error,
         register,
+        clearErrors,
       }}
     >
       {props.children}
