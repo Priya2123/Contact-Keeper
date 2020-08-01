@@ -26,7 +26,12 @@ const Register = () => {
     } else if (password !== password2) {
       setAlert("Passwords do not match", "danger");
     } else {
-      console.log("Register User");
+      register({
+        //formData
+        name,
+        email,
+        password,
+      });
     }
   };
   return (
@@ -42,7 +47,6 @@ const Register = () => {
             name="name"
             value={name}
             onChange={onChange}
-            placeholder="Name"
             required
           />
         </div>
@@ -53,7 +57,6 @@ const Register = () => {
             name="email"
             value={email}
             onChange={onChange}
-            placeholder="Email Address"
             required
           />
         </div>
@@ -64,7 +67,6 @@ const Register = () => {
             name="password"
             value={password}
             onChange={onChange}
-            placeholder="Password"
             required
             minLength="6"
           />
@@ -76,7 +78,6 @@ const Register = () => {
             name="password2"
             value={password2}
             onChange={onChange}
-            placeholder="Confirm Password"
             required
             minLength="6"
           />
