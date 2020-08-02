@@ -10,7 +10,7 @@ const Register = (props) => {
 
   useEffect(() => {
     if (isAuthenticated) {
-      props.history.push("/");
+      props.history.push("/"); //Redirecting the page to home page if authenticated
     }
     if (error === "User already exists") {
       setAlert(error, "danger");
