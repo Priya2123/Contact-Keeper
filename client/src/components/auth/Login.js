@@ -48,7 +48,6 @@ const Login = (props) => {
             name="email"
             value={email}
             onChange={onChange}
-            placeholder="Email Address"
             required
           />
         </div>
@@ -59,7 +58,6 @@ const Login = (props) => {
             name="password"
             value={password}
             onChange={onChange}
-            placeholder="Password"
             required
           />
         </div>
