@@ -1,3 +1,4 @@
+//to set the token globally (so that we don't have to pass it in everytime we make a req)
 import axios from "axios";
 
 const setAuthToken = (token) => {
