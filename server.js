@@ -3,20 +3,14 @@
 //import express
 const express = require("express");
 const connectDB = require("./config/db");
-const app = express();
 const path = require("path");
+const app = express();
 
 //connect database
 connectDB();
 
 //Init Middleware-to accept body data
 app.use(express.json({ extended: false }));
-
-// //get- type of request
-// app.get("/", (req, res) => {
-//   //returns an object
-//   res.json({ msg: "Welcome to the ContactKeeper API" });
-// });
 
 //Define Routes
 app.use("/api/auth", require("./routes/auth"));
