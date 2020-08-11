@@ -31,7 +31,7 @@ export default (state, action) => {
         ...state,
         //contact.id === entire state contacts ? updated contact : initial contact
         contacts: state.contacts.map((contact) =>
-          contact.id === action.payload.id ? action.payload : contact
+          contact._id === action.payload._id ? action.payload : contact
         ),
         loading: false,
       };

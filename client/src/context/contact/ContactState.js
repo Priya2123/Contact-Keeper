@@ -61,6 +61,25 @@ const ContactState = (props) => {
     }
   };
 
+  //Update Contact
+  const updateContact = async (contact) => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+    try {
+      const res = await axios.put(
+        `/api/contacts/${contact._id}`,
+        contact,
+        config
+      );
+      dispatch({ type: UPDATE_CONTACT, payload: res.data });
+    } catch (err) {
+      dispatch({ type: CONTACT_ERROR, payload: err.response.msg });
+    }
+  };
+
   //as soon as we logout, those contacts in the state are cleared instead of just being held there until we log back in
   //Clear Contacts
   const clearContacts = () => {
@@ -75,11 +94,6 @@ const ContactState = (props) => {
   //Clear Current Contact
   const clearCurrent = () => {
     dispatch({ type: CLEAR_CURRENT });
-  };
-
-  //Update Contact
-  const updateContact = (contact) => {
-    dispatch({ type: UPDATE_CONTACT, payload: contact });
   };
 
   //Filter Contacts
